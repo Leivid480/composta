@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compostaje MX - Guía Completa para un Mundo Sostenible</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+:root {
+  --primary-color: #2e7d32;
+  --secondary-color: #43a047;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* Comments Section */
+.comments-section {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+}
+
+.comments-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.submit-btn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: var(--transition);
+  align-self: flex-start;
+}
+
+.submit-btn:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.comment {
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.comment-author {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.comment-date {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.comment-content {
+  line-height: 1.6;
+}
+
+.no-comments {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+  padding: 20px;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .comments-section {
+    padding: 20px;
+  }
+}
+        :root {
+            --primary-color: #2E7D32;
+            --secondary-color: #81C784;
+            --accent-color: #FFC107;
+            --dark-color: #1B5E20;
+            --light-color: #E8F5E9;
+            --text-color: #333;
+            --text-light: #f8f9fa;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            background-color: #f8f9fa;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fondo animado mejorado */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(135deg, #E8F5E9, #C8E6C9, #A5D6A7, #81C784);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Partículas animadas */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: rgba(46, 125, 50, 0.3);
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(27, 94, 32, 0.95), rgba(46, 125, 50, 0.95));
+            color: var(--text-light);
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Navbar mejorada */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a i {
+            margin-right: 0.5rem;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Secciones mejoradas */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+        }
+
+        section h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        section p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            font-size: 1.1rem;
+        }
+
+        /* Contenedor de imágenes mejorado */
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .image-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 250px;
+        }
+
+        .image-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .image-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .image-card:hover .image-caption {
+            transform: translateY(0);
+        }
+
+        /* Listas mejoradas */
+        ul.feature-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        ul.feature-list li {
+            padding: 0.8rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        ul.feature-list li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        /* Pasos del proceso */
+        .steps-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .step-card {
+            flex: 1 1 300px;
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 3rem;
+            font-weight: bold;
+            color: rgba(46, 125, 50, 0.1);
+            z-index: 1;
+        }
+
+        .step-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Acordeón FAQ */
+        .faq-container {
+            margin: 2rem 0;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            background: var(--light-color);
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: #dcedc8;
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: white;
+        }
+
+        .faq-item.active .faq-question {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 1rem 1.5rem;
+        }
+
+        /* Testimonios */
+        .testimonials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .testimonial-card {
+            flex: 1 1 300px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .testimonial-card:before {
+            content: '\f10d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 2rem;
+            color: rgba(46, 125, 50, 0.1);
+        }
+
+        .testimonial-content {
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+        }
+
+        .author-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: black;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin: 4rem auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            animation: pulse 6s infinite linear;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+            100% { transform: scale(0.8); opacity: 0.5; }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            color: black;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--accent-color);
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background: #ffb300;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Footer mejorado */
+        footer {
+            background: linear-gradient(135deg, var(--dark-color), #0d3b13);
+            color: var(--text-light);
+            padding: 3rem 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            text-align: left;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            color: var(--text-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--dark-color);
+            transform: translateY(-5px);
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 1rem;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active li {
+                margin: 0;
+                padding: 0.5rem 0;
+            }
+            
+            .nav-links.active a {
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 2rem 1rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="particles" id="particles"></div>
+
+    <header>
+        <h1 class="fade-in">Compostaje MX</h1>
+        <p class="fade-in delay-1">Transformando residuos en recursos para un futuro sostenible</p>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="hoja1.html.html" class="logo"><i class="fas fa-leaf"></i> CompostaMX</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <a href="hoja1.html" class="active"><i class="fas fa-home"></i>Inicio</a>
+      <a href="hoja2.html"><i class="fas fa-leaf"></i>¿Qué es?</a>
+      <a href="hoja3.html"><i class="fas fa-seedling"></i>Beneficios</a>
+      <a href="hoja4.html"><i class="fas fa-recycle"></i>Tipos</a>
+      <a href="hoja5.html"><i class="fas fa-lightbulb"></i>Consejos</a>
+      <a href="hoja6.html"><i class="fas fa-envelope"></i>Contacto</a>
+<a href="hoja8.html"><i class="fas fa-shopping-cart"></i>Catálogo</a>
+
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="inicio" class="fade-in delay-2">
+            <h2>Consejos Expertos para un Compostaje Exitoso</h2>
+            <p>El compostaje es un arte y una ciencia. Con estos consejos profesionales, podrás crear abono de alta calidad mientras contribuyes al cuidado del medio ambiente. Aprende las mejores prácticas para optimizar tu proceso de compostaje.</p>
+            
+            <div class="image-container">
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1589927986089-35812388d1f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Compostaje doméstico">
+                    <div class="image-caption">
+                        <h3>Compostaje en casa</h3>
+                        <p>Fácil y efectivo para espacios reducidos</p>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1516054575922-f0b8eeadec1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Abono orgánico terminado">
+                    <div class="image-caption">
+                        <h3>Abono de calidad</h3>
+                        <p>Resultado de un buen proceso de compostaje</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="consejos-basicos" class="fade-in delay-3">
+            <h2>Consejos Básicos para Principiantes</h2>
+            <p>Si estás comenzando en el mundo del compostaje, estos consejos fundamentales te ayudarán a iniciar con el pie derecho:</p>
+            
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Ubicación adecuada</h3>
+                        <p>Elige un lugar con sombra parcial, protegido del viento y con buen drenaje. Debe ser accesible para agregar materiales y girar la composta.</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Balance de materiales</h3>
+                        <p>Mantén una proporción 3:1 de materiales "marrones" (secos, ricos en carbono) y "verdes" (húmedos, ricos en nitrógeno) para un compostaje óptimo.</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Tamaño de partículas</h3>
+                        <p>Tritura o corta los materiales en trozos pequeños (2-5 cm) para acelerar la descomposición. Esto aumenta la superficie disponible para los microorganismos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="consejos-avanzados" class="fade-in delay-4">
+            <h2>Técnicas Avanzadas de Compostaje</h2>
+            <p>Para aquellos que ya tienen experiencia en compostaje, estas técnicas avanzadas pueden mejorar significativamente la calidad y velocidad del proceso:</p>
+            
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Control de humedad</h3>
+                        <p>La composta debe tener la humedad de una esponja exprimida. Si está muy seca, añade agua o materiales verdes. Si está muy húmeda, añade materiales marrones.</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Aireación estratégica</h3>
+                        <p>Gira la pila cada 1-2 semanas para introducir oxígeno. Usa una herramienta de aireación para pilas grandes o difíciles de girar.</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Inoculación microbiana</h3>
+                        <p>Añade un puñado de composta terminada o tierra de bosque para introducir microorganismos beneficiosos que acelerarán el proceso.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="image-container">
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1581578731540-c0b0c3a971c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Control de humedad en compostaje">
+                    <div class="image-caption">
+                        <h3>Control de humedad</h3>
+                        <p>Clave para un compostaje eficiente</p>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1605000797499-95e51f0d4b72?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Aireación de composta">
+                    <div class="image-caption">
+                        <h3>Aireación</h3>
+                        <p>Oxígeno para microorganismos beneficiosos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="errores-comunes">
+            <h2>Errores Comunes y Cómo Evitarlos</h2>
+            <p>Incluso los compostadores experimentados pueden cometer errores. Aquí te mostramos los más comunes y cómo solucionarlos:</p>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Por qué mi composta huele mal?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Un mal olor generalmente indica exceso de humedad y falta de oxígeno. Para solucionarlo: añade materiales marrones (hojas secas, cartón), gira la pila para airearla y evita compactar los materiales. También revisa que no hayas añadido productos animales o lácteos.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Por qué mi composta no se calienta?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Si la pila no alcanza temperaturas entre 50-70°C, puede deberse a: tamaño insuficiente (menos de 1m³), falta de materiales verdes (nitrógeno), exceso de sequedad o falta de aireación. Asegúrate de tener la mezcla adecuada, humedad correcta y voltea regularmente.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Por qué aparecen insectos no deseados?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Moscas y otros insectos suelen aparecer cuando se añaden alimentos expuestos o cuando la pila no alcanza temperatura suficiente. Cubre siempre los restos de comida con una capa de materiales marrones, mantén la pila caliente y bien aireada. Una capa de tierra o composta terminada en la superficie también ayuda.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Por qué tarda tanto en descomponerse?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>El proceso lento puede deberse a: partículas demasiado grandes (tritúralas), desbalance en la relación carbono/nitrógeno (ajusta la proporción), falta de humedad (debe estar húmedo pero no empapado) o temperatura ambiental baja (en invierno, el proceso es más lento).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="soluciones-problemas">
+            <h2>Soluciones Rápidas a Problemas Comunes</h2>
+            <p>Tabla de referencia rápida para identificar y solucionar problemas frecuentes en el compostaje:</p>
+            
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0;">
+                    <thead>
+                        <tr style="background-color: var(--primary-color); color: white;">
+                            <th style="padding: 12px; text-align: left;">Problema</th>
+                            <th style="padding: 12px; text-align: left;">Causa probable</th>
+                            <th style="padding: 12px; text-align: left;">Solución</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 12px;">Mal olor (huevos podridos)</td>
+                            <td style="padding: 12px;">Exceso de humedad, falta de aireación</td>
+                            <td style="padding: 12px;">Añadir materiales marrones, girar la pila</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 12px;">Olor a amoníaco</td>
+                            <td style="padding: 12px;">Exceso de materiales verdes</td>
+                            <td style="padding: 12px;">Añadir materiales marrones, mezclar bien</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 12px;">Pila fría (no se calienta)</td>
+                            <td style="padding: 12px;">Falta de nitrógeno, tamaño pequeño</td>
+                            <td style="padding: 12px;">Añadir materiales verdes, aumentar tamaño</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 12px;">Materiales no se descomponen</td>
+                            <td style="padding: 12px;">Falta de humedad, partículas grandes</td>
+                            <td style="padding: 12px;">Mojar, triturar materiales, girar</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 12px;">Presencia de roedores</td>
+                            <td style="padding: 12px;">Restos de comida expuestos</td>
+                            <td style="padding: 12px;">Enterrar restos, usar compostera cerrada</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="testimonios">
+            <h2>Historias de Éxito</h2>
+            <p>Inspírate con estas experiencias reales de personas que han transformado sus residuos en recursos valiosos:</p>
+            
+            <div class="testimonials">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Empecé a compostar hace un año y ahora produzco suficiente abono para todo mi jardín. Mis plantas nunca han estado tan saludables. Lo mejor es que reduje mi basura en un 40%."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="María González">
+                        <div class="author-info">
+                            <h4>María González</h4>
+                            <p>Jardinería urbana</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Como chef, generamos muchos residuos orgánicos. Implementamos compostaje en nuestro restaurante y ahora convertimos el 90% de nuestros desechos en abono que usamos en un huerto comunitario."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Mendoza">
+                        <div class="author-info">
+                            <h4>Carlos Mendoza</h4>
+                            <p>Chef profesional</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "En nuestra escuela primaria, el proyecto de compostaje no solo redujo nuestros desechos, sino que se convirtió en una herramienta educativa maravillosa. Los niños aprenden sobre ciclos naturales y responsabilidad ambiental."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Laura Díaz">
+                        <div class="author-info">
+                            <h4>Laura Díaz</h4>
+                            <p>Maestra de primaria</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="herramientas-recursos">
+            <h2>Herramientas y Recursos Adicionales</h2>
+            <p>Para llevar tu compostaje al siguiente nivel, considera estas herramientas y recursos útiles:</p>
+            
+            <ul class="feature-list">
+                <li><strong>Termómetro para composta:</strong> Mide la temperatura interna para monitorear la actividad microbiana.</li>
+                <li><strong>Aireador de composta:</strong> Herramienta especial para introducir oxígeno sin voltear toda la pila.</li>
+                <li><strong>Trituradora de jardín:</strong> Para reducir el tamaño de ramas y materiales leñosos.</li>
+                <li><strong>Contenedor de lombricomposta:</strong> Ideal para espacios pequeños o interiores.</li>
+                <li><strong>App Compostaje MX:</strong> Registra tus procesos, recibe recordatorios y consejos personalizados.</li>
+                <li><strong>Talleres locales:</strong> Muchas comunidades ofrecen cursos prácticos de compostaje.</li>
+            </ul>
+            
+            <div class="image-container">
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1594122230681-6b4b50a7c59a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Herramientas para compostaje">
+                    <div class="image-caption">
+                        <h3>Equipo esencial</h3>
+                        <p>Inversiones que valen la pena</p>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1585336261022-680e295ce3fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Aplicación de compostaje">
+                    <div class="image-caption">
+                        <h3>Tecnología útil</h3>
+                        <p>Apps para compostadores modernos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-content">
+                <!-- Comments Section -->
+<section class="comments-section" id="comparte-consejos">
+  <h2>Comparte tus consejos y experiencias</h2>
+  
+  <form class="comment-form" id="comment-form">
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="comment">Tu consejo o experiencia sobre compostaje:</label>
+      <textarea id="comment" name="comment" required></textarea>
+    </div>
+    
+    <button type="submit" class="submit-btn">Publicar Consejo</button>
+  </form>
+  
+  <div class="comments-list" id="comments-list">
+    <!-- Los comentarios se cargarán aquí dinámicamente -->
+  </div>
+</section></p>
+                           </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>CompostaMX</h3>
+                <p>Líderes en educación sobre compostaje y sostenibilidad en México desde 2015.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Enlaces Rápidos</h3>
+                <ul class="footer-links">
+                   <a href="hoja1.html" class="active"><i class="fas fa-home"></i>Inicio</a>
+      <a href="hoja2.html"><i class="fas fa-leaf"></i>¿Qué es?</a>
+      <a href="hoja3.html"><i class="fas fa-seedling"></i>Beneficios</a>
+      <a href="hoja4.html"><i class="fas fa-recycle"></i>Tipos</a>
+      <a href="hoja5.html"><i class="fas fa-lightbulb"></i>Consejos</a>
+      <a href="hoja6.html"><i class="fas fa-envelope"></i>Contacto</a>
+<a href="hoja8.html"><i class="fas fa-shopping-cart"></i>Catálogo</a>
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Recursos</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Guía PDF Gratis</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Calculadora de Compost</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Calendario de Talleres</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:info@compostamx.com"><i class="fas fa-envelope"></i> info@compostamx.com</a></li>
+                    <li><a href="tel:+525555555555"><i class="fas fa-phone"></i> 55-5555-5555</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> CDMX, México</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Composta MX. Todos los derechos reservados. | <a href="#">Política de Privacidad</a> | <a href="#">Términos de Servicio</a></p>
+            <p>Diseñado con <i class="fas fa-heart" style="color: #ff6b6b;"></i> para un planeta más verde</p>
+        </div>
+    </footer>
+
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+
+
+    <script>
+// Comments functionality
+document.addEventListener('DOMContentLoaded', function() {
+  loadComments();
+  
+  const commentForm = document.getElementById('comment-form');
+  commentForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value.trim();
+    const commentText = document.getElementById('comment').value.trim();
+    
+    if (name && commentText) {
+      saveComment(name, commentText);
+      commentForm.reset();
+    }
+  });
+});
+
+// Save comment to localStorage
+function saveComment(name, comment) {
+  const comments = JSON.parse(localStorage.getItem('composting-comments')) || [];
+  const newComment = {
+    id: Date.now(),
+    name: name,
+    comment: comment,
+    date: new Date().toLocaleDateString('es-MX', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    })
+  };
+  
+  comments.unshift(newComment); // Add new comment to beginning of array
+  localStorage.setItem('composting-comments', JSON.stringify(comments));
+  loadComments();
+}
+
+// Load comments from localStorage
+function loadComments() {
+  const commentsList = document.getElementById('comments-list');
+  const comments = JSON.parse(localStorage.getItem('composting-comments')) || [];
+  
+  if (comments.length === 0) {
+    commentsList.innerHTML = '<div class="no-comments">No hay consejos aún. ¡Sé el primero en compartir!</div>';
+    return;
+  }
+  
+  commentsList.innerHTML = comments.map(comment => `
+    <div class="comment" data-id="${comment.id}">
+      <div class="comment-header">
+        <span class="comment-author">${comment.name}</span>
+        <span class="comment-date">${comment.date}</span>
+      </div>
+      <div class="comment-content">${comment.comment}</div>
+    </div>
+  `).join('');
+}
+
+        // Crear partículas animadas
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Tamaño aleatorio entre 5 y 15px
+                const size = Math.random() * 10 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Posición inicial aleatoria
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.bottom = `-${size}px`;
+                
+                // Duración y delay de animación aleatorios
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 10;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Acordeón FAQ
+        function setupFAQ() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Cerrar otros items abiertos
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Alternar el item actual
+                    item.classList.toggle('active');
+                });
+            });
+        }
+        
+        // Botón scroll to top
+        function setupScrollTop() {
+            const scrollTopBtn = document.getElementById('scrollTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('active');
+                } else {
+                    scrollTopBtn.classList.remove('active');
+                }
+            });
+            
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Menú móvil
+        function setupMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+        
+        // Animaciones al hacer scroll
+        function setupScrollAnimations() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            function checkScroll() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            // Ejecutar al cargar y al hacer scroll
+            window.addEventListener('load', checkScroll);
+            window.addEventListener('scroll', checkScroll);
+        }
+        
+        // Inicializar todo cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            setupFAQ();
+            setupScrollTop();
+            setupMobileMenu();
+            setupScrollAnimations();
+        });
+    </script>
+</body>
+</html>

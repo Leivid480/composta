@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compostas | Transformando residuos en recursos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --primary-light: #81c784;
+            --primary-dark: #1b5e20;
+            --secondary: #ffa000;
+            --secondary-light: #ffd149;
+            --secondary-dark: #c67100;
+            --accent: #ff5722;
+            --text: #333333;
+            --text-light: #666666;
+            --text-lighter: #888888;
+            --bg: #f5f5f5;
+            --card-bg: #ffffff;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        /* Header mejorado con animación más suave */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.6;
+        }
+        
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeInDown 1s ease;
+        }
+        
+        header p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        /* Navbar mejorado con efecto hover y sticky */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: var(--card-bg);
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        nav.scrolled {
+            padding: 0.5rem 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        nav a.active {
+            color: var(--primary);
+        }
+        
+        nav a.active::after {
+            width: 100%;
+        }
+        
+        /* Contenido principal mejorado */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .content {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            transition: var(--transition);
+            transform: translateY(0);
+        }
+        
+        .content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        }
+        
+        .content h2 {
+            color: var(--primary);
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+        
+        /* Sección de video mejorada */
+        .video-section {
+            margin: 3rem auto;
+            text-align: center;
+            max-width: 800px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+        
+        .video-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        }
+        
+        .video-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Highlight mejorado */
+        .highlight {
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.1), rgba(129, 199, 132, 0.1));
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary);
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight::before {
+            content: '💡';
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 1.5rem;
+            opacity: 0.1;
+        }
+        
+        .highlight strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        /* Lista mejorada */
+        .content ul {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+        
+        .content ul li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            list-style-type: none;
+            padding-left: 1.8rem;
+        }
+        
+        .content ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* Tarjetas interactivas */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            text-align: center;
+            border-top: 4px solid var(--primary);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .card h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+        
+        /* Acordeón FAQ */
+        .faq-section {
+            margin: 3rem 0;
+        }
+        
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .faq-question {
+            background: var(--primary);
+            color: white;
+            padding: 1.2rem 2rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background: var(--primary-dark);
+        }
+        
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .faq-question.active::after {
+            content: '-';
+        }
+        
+        .faq-answer {
+            background: var(--card-bg);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .faq-answer-content {
+            padding: 1.5rem 2rem;
+        }
+        
+        /* Footer mejorado */
+        footer {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Botón flotante */
+        .floating-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 999;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .floating-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Efectos de scroll */
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+        }
+        
+        .slide-up {
+            transform: translateY(50px);
+        }
+        
+        .slide-up.visible {
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                padding: 0.5rem;
+            }
+            
+            nav a {
+                margin: 0.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="fade-in">Compostas</h1>
+        <p class="fade-in">Transformando residuos orgánicos en recursos valiosos para un planeta más verde</p>
+    </header>
+    
+    <nav id="mainNav">
+       <a href="hoja1.html" class="active"><i class="fas fa-home"></i>Inicio</a>
+      <a href="hoja2.html"><i class="fas fa-leaf"></i>¿Qué es?</a>
+      <a href="hoja3.html"><i class="fas fa-seedling"></i>Beneficios</a>
+      <a href="hoja4.html"><i class="fas fa-recycle"></i>Tipos</a>
+      <a href="hoja5.html"><i class="fas fa-lightbulb"></i>Consejos</a>
+       <a href="hoja6.html" class="active"><i class="fas fa-hand-holding-heart"></i>Donar</a>
+
+<a href="hoja8.html"><i class="fas fa-shopping-cart"></i>Catálogo</a>
+
+    </nav>
+    
+    <div class="container">
+        <div class="content fade-in slide-up">
+            <h2>¿Qué son las compostas?</h2>
+            <p>Las compostas son sistemas diseñados para acelerar el proceso natural de descomposición de materiales orgánicos, transformándolos en un abono rico en nutrientes conocido como compost. Este proceso, conocido como compostaje, es una forma ecológica de gestionar los residuos orgánicos mientras se crea un valioso recurso para la tierra.</p>
+            
+            <div class="highlight fade-in slide-up">
+                <strong>Dato clave:</strong> El compostaje puede reducir hasta un 50% de los residuos domésticos que terminan en vertederos, disminuyendo significativamente la producción de metano (un potente gas de efecto invernadero) y creando un fertilizante natural que mejora la estructura del suelo.
+            </div>
+            
+            <div class="card-grid">
+                <div class="card fade-in slide-up" style="transition-delay: 0.1s">
+                    <i class="fas fa-recycle"></i>
+                    <h3>Proceso Natural</h3>
+                    <p>Imita el ciclo natural de descomposición pero de forma controlada y acelerada, reduciendo el tiempo de meses a semanas.</p>
+                </div>
+                
+                <div class="card fade-in slide-up" style="transition-delay: 0.2s">
+                    <i class="fas fa-bacteria"></i>
+                    <h3>Microorganismos</h3>
+                    <p>Bacterias, hongos y otros microorganismos descomponen la materia orgánica con la ayuda de oxígeno (proceso aeróbico).</p>
+                </div>
+                
+                <div class="card fade-in slide-up" style="transition-delay: 0.3s">
+                    <i class="fas fa-temperature-high"></i>
+                    <h3>Temperatura</h3>
+                    <p>El proceso genera calor (hasta 60-70°C), lo que ayuda a eliminar patógenos y semillas de malas hierbas.</p>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 2rem;">Materiales que se pueden compostar</h3>
+            <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="card fade-in slide-up" style="border-top-color: #4CAF50; transition-delay: 0.1s">
+                    <i class="fas fa-apple-alt" style="color: #4CAF50;"></i>
+                    <h3 style="color: #4CAF50;">Restos vegetales</h3>
+                    <p>Frutas, verduras, cáscaras de huevo, posos de café y bolsitas de té.</p>
+                </div>
+                
+                <div class="card fade-in slide-up" style="border-top-color: #8BC34A; transition-delay: 0.2s">
+                    <i class="fas fa-leaf" style="color: #8BC34A;"></i>
+                    <h3 style="color: #8BC34A;">Material seco</h3>
+                    <p>Hojas secas, ramitas, césped cortado, paja y serrín (no tratado).</p>
+                </div>
+                
+                <div class="card fade-in slide-up" style="border-top-color: #CDDC39; transition-delay: 0.3s">
+                    <i class="fas fa-newspaper" style="color: #CDDC39;"></i>
+                    <h3 style="color: #CDDC39;">Papel y cartón</h3>
+                    <p>Papel sin tintas, cartón corrugado sin recubrimientos plásticos.</p>
+                </div>
+                
+                <div class="card fade-in slide-up" style="border-top-color: #FFC107; transition-delay: 0.4s">
+                    <i class="fas fa-ban" style="color: #FFC107;"></i>
+                    <h3 style="color: #FFC107;">Evitar</h3>
+                    <p>Carne, lácteos, grasas, heces de mascotas o materiales no orgánicos.</p>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 2rem;">Impacto ambiental positivo</h3>
+            <p>Las compostas ofreccen múltiples beneficios ambientales:</p>
+            <ul>
+                <li><strong>Reducción de residuos:</strong> Disminuye la cantidad de basura que termina en vertederos hasta en un 50%.</li>
+                <li><strong>Menos emisiones:</strong> Reduce la producción de metano (CH₄) en vertederos, un gas 25 veces más potente que el CO₂.</li>
+                <li><strong>Mejora del suelo:</strong> Aumenta la retención de agua, reduce la erosión y mejora la estructura del suelo.</li>
+                <li><strong>Menos químicos:</strong> Disminuye la necesidad de fertilizantes sintéticos, reduciendo la contaminación de aguas.</li>
+                <li><strong>Secuestro de carbono:</strong> El compost aplicado al suelo ayuda a capturar carbono atmosférico.</li>
+            </ul>
+        </div>
+        
+        <div class="video-section fade-in slide-up">
+            <h3>Aprende más sobre el compostaje</h3>
+            <p>Descubre en este video cómo el compostaje puede transformar radicalmente tu forma de manejar los residuos orgánicos y contribuir a un planeta más sostenible.</p>
+            <div class="video-container">
+                <iframe src="L.mp4" title="Video educativo sobre compostaje" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-lighter);">Video cortesía de EcoInventos - Educación Ambiental</p>
+        </div>
+        
+        <div class="faq-section fade-in slide-up">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Preguntas Frecuentes</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">¿Cuánto tiempo tarda en hacerse el compost?</div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>El tiempo varía según el método y los materiales usados. En condiciones óptimas:</p>
+                        <ul>
+                            <li><strong>Compostaje caliente (activo):</strong> 2-3 meses</li>
+                            <li><strong>Compostaje frío (pasivo):</strong> 6-12 meses</li>
+                            <li><strong>Vermicompostaje (con lombrices):</strong> 2-4 meses</li>
+                        </ul>
+                        <p>Factores como temperatura, humedad, relación carbono/nitrógeno y volteo frecuente aceleran el proceso.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">¿El compost huele mal?</div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Un compost bien mantenido debería tener un olor terroso y agradable. Los malos olores indican problemas:</p>
+                        <ul>
+                            <li><strong>Olor a podrido:</strong> Exceso de humedad o materiales verdes (nitrógeno). Añade materiales secos (hojas, cartón) y voltea.</li>
+                            <li><strong>Olor a amoníaco:</strong> Demasiado nitrógeno. Añade más materiales carbonosos (hojas secas, papel).</li>
+                            <li><strong>Olor a vinagre:</strong> Falta de oxígeno. Voltea más frecuentemente para airear.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">¿Puedo compostar en un departamento pequeño?</div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>¡Absolutamente! Existen varias opciones para espacios reducidos:</p>
+                        <ul>
+                            <li><strong>Vermicomposteras:</strong> Pequeños contenedores con lombrices rojas californianas que procesan los residuos.</li>
+                            <li><strong>Bokashi:</strong> Sistema de fermentación en balde hermético que acepta incluso carne y lácteos.</li>
+                            <li><strong>Composteras eléctricas:</strong> Compactas, rápidas y sin olores (aunque consumen energía).</li>
+                            <li><strong>Comunidad de compostaje:</strong> Muchas ciudades tienen programas de recolección de orgánicos.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Compostas</h3>
+                <p>Transformando residuos en recursos desde 2020. Nuestra misión es educar sobre el compostaje y sus beneficios ambientales.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Enlaces rápidos</h3>
+                <ul>
+                   <a href="hoja1.html" class="active"><i class="fas fa-home"></i>Inicio</a>
+      <a href="hoja2.html"><i class="fas fa-leaf"></i>¿Qué es?</a>
+      <a href="hoja3.html"><i class="fas fa-seedling"></i>Beneficios</a>
+      <a href="hoja4.html"><i class="fas fa-recycle"></i>Tipos</a>
+      <a href="hoja5.html"><i class="fas fa-lightbulb"></i>Consejos</a>
+      <a href="hoja6.html"><i class="fas fa-envelope"></i>Contacto</a>
+<a href="hoja8.html"><i class="fas fa-shopping-cart"></i>Catálogo</a>
+
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Recursos</h3>
+                <ul>
+                    <li><a href="#">Guía de compostaje PDF</a></li>
+                    <li><a href="#">Calculadora de residuos</a></li>
+                    <li><a href="#">Mapa de centros de compostaje</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> info@compostas.org</li>
+                    <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Calle Ecológica 123, Ciudad Verde</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2025 Compostas. Todos los derechos reservados. | <a href="#" style="color: rgba(255, 255, 255, 0.7);">Política de privacidad</a> | <a href="#" style="color: rgba(255, 255, 255, 0.7);">Términos de servicio</a></p>
+        </div>
+    </footer>
+    
+    <a href="#" class="floating-btn" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+        
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = question.classList.contains('active');
+                
+                // Close all others
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    if (q !== question) {
+                        q.classList.remove('active');
+                        q.nextElementSibling.style.maxHeight = null;
+                    }
+                });
+                
+                // Toggle current
+                question.classList.toggle('active');
+                if (isOpen) {
+                    answer.style.maxHeight = null;
+                } else {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+        
+        // Back to top button
+        document.getElementById('backToTop').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Scroll reveal animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        fadeElements.forEach(el => observer.observe(el));
+        
+        // Active nav link based on scroll position
+        const sections = document.querySelectorAll('.content, .video-section, .faq-section');
+        const navLinks = document.querySelectorAll('nav a');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

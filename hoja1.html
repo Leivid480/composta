@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compostas Ecológicas | Transforma residuos en recursos</title>
+  <meta name="description" content="Aprende todo sobre compostaje doméstico y cómo transformar tus residuos orgánicos en abono nutritivo para plantas.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+ :root {
+      --primary-color: #2e7d32;
+      --secondary-color: #43a047;
+      --accent-color: #ff9800;
+      --light-color: #f5f5f5;
+      --dark-color: #333;
+      --text-color: #444;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
+      background-color: #fefefe;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Roboto Slab', serif;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+
+    /* Background animation */
+    .gradient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, #f8f4e5, #e1f5fe, #e8f5e9, #fff3e0);
+      background-size: 400% 400%;
+      animation: gradientBG 20s ease infinite;
+      z-index: -2;
+      opacity: 0.9;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Main content */
+    .main-content {
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Game section */
+    .game-section {
+      max-width: 1000px;
+      width: 100%;
+      text-align: center;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(5px);
+    }
+
+    .game-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .game-section p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: var(--text-color);
+    }
+
+    /* Memory game grid */
+    .memory-game {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      max-width: 600px;
+      margin: 0 auto;
+      perspective: 1000px;
+    }
+
+    .memory-card {
+      position: relative;
+      width: 100%;
+      padding-bottom: 100%; /* Maintains square aspect ratio */
+      background: var(--light-color);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+    }
+
+    .memory-card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-front {
+      background: var(--primary-color);
+      color: white;
+      font-size: 2rem;
+      transform: rotateY(180deg);
+    }
+
+    .card-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .card-back {
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-back i {
+      font-size: 2rem;
+      color: white;
+    }
+
+    /* Game controls */
+    .game-controls {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .game-btn {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .game-btn:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+
+    /* Game info */
+    .game-info {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      color: var(--text-color);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .player-turn {
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .memory-game {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .game-section h2 {
+        font-size: 2rem;
+      }
+
+      .game-info {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .memory-game {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .game-section {
+        padding: 20px;
+      }
+
+      .game-section h2 {
+        font-size: 1.8rem;
+      }
+
+      .game-section p {
+        font-size: 1rem;
+      }
+    }
+
+    :root {
+      --primary-color: #2e7d32;
+      --secondary-color: #43a047;
+      --accent-color: #ff9800;
+      --light-color: #f5f5f5;
+      --dark-color: #333;
+      --text-color: #444;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
+      background-color: #fefefe;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Roboto Slab', serif;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+
+    /* Background animation */
+    .gradient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, #f8f4e5, #e1f5fe, #e8f5e9, #fff3e0);
+      background-size: 400% 400%;
+      animation: gradientBG 20s ease infinite;
+      z-index: -2;
+      opacity: 0.9;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 280px;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.95);
+      position: fixed;
+      left: 0;
+      top: 0;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar.hidden {
+      transform: translateX(-100%);
+    }
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar h1 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-left: 10px;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: var(--dark-color);
+      font-weight: 500;
+      margin: 12px 0;
+      padding: 10px 15px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sidebar a i {
+      margin-right: 12px;
+      font-size: 1.1rem;
+      width: 24px;
+      text-align: center;
+    }
+
+    .sidebar a::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background-color: var(--primary-color);
+      transform: scaleY(0);
+      transition: var(--transition);
+      transform-origin: bottom;
+    }
+
+    .sidebar a:hover {
+      background-color: rgba(46, 125, 50, 0.1);
+      color: var(--primary-color);
+      transform: translateX(5px);
+    }
+
+    .sidebar a:hover::before {
+      transform: scaleY(1);
+    }
+
+    .sidebar a.active {
+      background-color: rgba(46, 125, 50, 0.1);
+      color: var(--primary-color);
+    }
+
+    .sidebar a.active::before {
+      transform: scaleY(1);
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      font-size: 0.8rem;
+      text-align: center;
+      color: #777;
+    }
+
+    /* Toggle button */
+    .toggle-btn {
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      background-color: var(--primary-color);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .toggle-btn:hover {
+      background-color: var(--secondary-color);
+      transform: scale(1.1);
+    }
+
+    .toggle-btn i {
+      font-size: 1.3rem;
+    }
+
+    /* Main content */
+    .main-content {
+      margin-left: 280px;
+      padding: 0;
+      transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main-content.full {
+      margin-left: 0;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(232, 245, 233, 0.9));
+      color: var(--primary-color);
+      text-align: center;
+      padding: 60px 20px 40px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="%232e7d32" fill-opacity="0.03" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"></path></svg>');
+      background-size: 100% 100%;
+      z-index: -1;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      animation: fadeInDown 1s ease;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--text-color);
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+
+    .scroll-down {
+      margin-top: 30px;
+      animation: bounce 2s infinite 1s;
+    }
+
+    .scroll-down i {
+      font-size: 2rem;
+      color: var(--primary-color);
+      cursor: pointer;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-20px); }
+      60% { transform: translateY(-10px); }
+    }
+
+    /* Carousel */
+    .carousel-container {
+      width: 100%;
+      max-width: 1000px;
+      margin: 40px auto;
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.5s ease;
+      height: 100%;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+      color: white;
+      padding: 30px;
+      text-align: left;
+    }
+
+    .slide-content h3 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .slide-content p {
+      font-size: 1.1rem;
+      max-width: 600px;
+    }
+
+    .carousel-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 20px;
+      z-index: 10;
+    }
+
+    .carousel-btn {
+      background-color: rgba(255, 255, 255, 0.7);
+      color: var(--primary-color);
+      width: 50px;
+      height: 50px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .carousel-btn:hover {
+      background-color: white;
+      transform: scale(1.1);
+    }
+
+    .carousel-indicators {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .indicator.active {
+      background-color: white;
+      transform: scale(1.2);
+    }
+
+    /* Sections */
+    .section {
+      padding: 80px 20px;
+      position: relative;
+    }
+
+    .section:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      display: inline-block;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--accent-color);
+    }
+
+    .section-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    /* Features grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .feature-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-align: center;
+      border-top: 4px solid var(--primary-color);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    /* Stats */
+    .stats-container {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      padding: 20px;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-family: 'Roboto Slab', serif;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Floating action button */
+    .floating-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 15px 25px;
+      font-size: 1rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: var(--transition);
+    }
+
+    .floating-btn:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 2000;
+      overflow-y: auto;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 80px auto;
+      width: 90%;
+      max-width: 600px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: slideUp 0.4s ease;
+      position: relative;
+    }
+
+    .modal-header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 {
+      margin: 0;
+      color: white;
+    }
+
+    .close {
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .close:hover {
+      transform: rotate(90deg);
+      color: #ffeb3b;
+    }
+
+    .modal-body {
+      padding: 30px;
+    }
+
+    .modal-body h4 {
+      color: var(--primary-color);
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 50px 20px 20px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      text-align: left;
+    }
+
+    .footer-column h3 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-column a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 90px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: #ff8f00;
+      transform: translateY(-5px);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .carousel {
+        height: 400px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .main-content {
+        margin-left: 0;
+      }
+      
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      
+      header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .carousel {
+        height: 350px;
+      }
+      
+      .section {
+        padding: 60px 20px;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
+      
+      .carousel {
+        height: 300px;
+      }
+      
+      .slide-content {
+        padding: 20px;
+      }
+      
+      .slide-content h3 {
+        font-size: 1.4rem;
+      }
+      
+      .slide-content p {
+        font-size: 1rem;
+      }
+      
+      .floating-btn {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+      
+      .back-to-top {
+        bottom: 80px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="gradient-bg"></div>
+  
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar hidden" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">C</div>
+      <h1>Compostas</h1>
+    </div>
+    
+    <div class="nav-links">
+      <a href="hoja1.html" class="active"><i class="fas fa-home"></i>Inicio</a>
+      <a href="hoja2.html"><i class="fas fa-leaf"></i>¿Qué es?</a>
+      <a href="hoja3.html"><i class="fas fa-seedling"></i>Beneficios</a>
+      <a href="hoja4.html"><i class="fas fa-recycle"></i>Tipos</a>
+      <a href="hoja5.html"><i class="fas fa-lightbulb"></i>Consejos</a>
+      <a href="hoja6.html" class="active"><i class="fas fa-hand-holding-heart"></i>Donar</a>
+<a href="hoja8.html"><i class="fas fa-shopping-cart"></i>Catálogo</a>
+    </div>
+    
+    <div class="sidebar-footer">
+      <p>Transformando residuos en recursos</p>
+    </div>
+  </nav>
+  
+  <!-- Toggle Button -->
+  <button class="toggle-btn" onclick="toggleSidebar()" aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+  
+  <!-- Main Content -->
+  <main class="main-content" id="main-content">
+    <!-- Hero Section -->
+    <header id="home">
+      <h1>Compostas Ecológicas</h1>
+      <p>Transforma tus residuos orgánicos en abono nutritivo y contribuye a un planeta más verde</p>
+      <div class="scroll-down" onclick="scrollToSection('about')">
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </header>
+    
+    <!-- Carousel Section -->
+    <div class="carousel-container">
+      <div class="carousel">
+        <div class="carousel-inner" id="carousel-inner">
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1589927986089-35812388d1f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Proceso de compostaje activo">
+            <div class="slide-content">
+              <h3>Transforma tus residuos en recursos</h3>
+              <p>El compostaje es la forma más natural de reciclar tus desechos orgánicos y convertirlos en abono nutritivo para tus plantas.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1516054575922-f0b8eeadec1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Materiales apropiados para compostar">
+            <div class="slide-content">
+              <h3>¿Qué puedes compostar?</h3>
+              <p>Restos de frutas, verduras, cáscaras de huevo, hojas secas y más. Aprende qué materiales son ideales para tu compostera.</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Beneficios ambientales del compostaje">
+            <div class="slide-content">
+              <h3>Beneficios ambientales</h3>
+              <p>Reduce hasta un 50% tu basura doméstica, disminuye emisiones de gases de efecto invernadero y mejora la salud del suelo.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="carousel-controls">
+          <button class="carousel-btn" onclick="prevSlide()" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+          <button class="carousel-btn" onclick="nextSlide()" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        
+        <div class="carousel-indicators" id="indicators">
+          <span class="indicator active" onclick="goToSlide(0)"></span>
+          <span class="indicator" onclick="goToSlide(1)"></span>
+          <span class="indicator" onclick="goToSlide(2)"></span>
+        </div>
+      </div>
+    </div>
+    
+       
+        
+    <!-- Who We Are Section -->
+    <section class="section" id="who-we-are">
+      <div class="section-title">
+        <h2>¿Quiénes somos?</h2>
+      </div>
+      
+      <div class="section-content">
+        <p>Somos un equipo multidisciplinario de estudiantes y profesionales comprometidos con la educación ambiental y la implementación de soluciones sostenibles. Nuestro proyecto nace de la preocupación por el manejo inadecuado de residuos orgánicos y su impacto en el medio ambiente.</p>
+        
+        <p>A través de talleres, capacitaciones y la implementación de sistemas de compostaje comunitario, buscamos empoderar a las personas con el conocimiento y las herramientas necesarias para transformar sus residuos en recursos valiosos. Creemos firmemente que pequeños cambios en nuestros hábitos diarios pueden generar un impacto significativo en la salud de nuestro planeta.</p>
+        
+        <p>Formamos parte del <strong>Proyecto Aula, Escuela, Comunidad</strong> (PAEC), una iniciativa educativa que promueve la vinculación entre el aprendizaje académico y la solución de problemas reales en la comunidad. Este enfoque nos permite aplicar los conocimientos teóricos en proyectos prácticos que benefician tanto a los estudiantes como a su entorno social.</p>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3>Educación</h3>
+            <p>Talleres y materiales educativos sobre compostaje y manejo sostenible de residuos.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-hands-helping"></i>
+            </div>
+            <h3>Comunidad</h3>
+            <p>Sistemas de compostaje comunitario y acompañamiento técnico para su implementación.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-flask"></i>
+            </div>
+            <h3>Investigación</h3>
+            <p>Desarrollo de técnicas innovadoras para optimizar el proceso de compostaje.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<div class="gradient-bg"></div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <section class="game-section">
+      <h2>Memorama de Compostaje para Dos Jugadores</h2>
+      <p>¡Compite con un amigo en este memorama educativo! Encuentren las parejas de imágenes sobre compostaje. Gana quien encuentre más pares.</p>
+      <div class="memory-game" id="memory-game"></div>
+      <div class="game-info">
+        <span>Jugador 1: <span id="score1">0</span> puntos</span>
+        <span>Jugador 2: <span id="score2">0</span> puntos</span>
+        <span>Turno: <span id="current-player" class="player-turn">Jugador 1</span></span>
+        <span>Intentos: <span id="moves">0</span></span>
+      </div>
+      <div class="game-controls">
+        <button class="game-btn" onclick="resetGame()">Reiniciar Juego</button>
+      </div>
+    </section>
+  </main>
+    
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Compostas</h3>
+          <p>Transformando residuos en recursos desde 2023. Comprometidos con la educación ambiental y la sostenibilidad.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Enlaces rápidos</h3>
+          <ul>
+            <a href="hoja1.html" class="active"><i class="fas fa-home"></i>Inicio</a>
+      <a href="hoja2.html"><i class="fas fa-leaf"></i>¿Qué es?</a>
+      <a href="hoja3.html"><i class="fas fa-seedling"></i>Beneficios</a>
+      <a href="hoja4.html"><i class="fas fa-recycle"></i>Tipos</a>
+      <a href="hoja5.html"><i class="fas fa-lightbulb"></i>Consejos</a>
+      <a href="hoja6.html"><i class="fas fa-envelope"></i>Contacto</a>
+<a href="hoja8.html"><i class="fas fa-shopping-cart"></i>Catálogo</a>
+
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Contacto</h3>
+          <ul>
+            <li><i class="fas fa-envelope"></i> info@compostas.org</li>
+            <li><i class="fas fa-phone"></i> +52 55 1234 5678</li>
+            <li><i class="fas fa-map-marker-alt"></i> Ciudad de México, México</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2025 Compostas Ecológicas. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+  </main>
+  
+  <!-- Floating Action Button -->
+  <button class="floating-btn" onclick="openModal()">
+    <i class="fas fa-info-circle"></i> Visión y Misión
+  </button>
+  
+  <!-- Back to Top Button -->
+  <button class="back-to-top" onclick="scrollToTop()" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  
+  <!-- Modal -->
+  <div id="visionModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Nuestra Visión y Misión</h3>
+        <span class="close" onclick="closeModal()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <h4>Visión</h4>
+        <p>Ser el referente en educación ambiental sobre compostaje en nuestra comunidad, promoviendo una cultura de sostenibilidad donde los residuos orgánicos sean valorados como recursos y no como desechos. Aspiramos a crear una red de hogares y comunidades que practiquen el compostaje como parte de su rutina diaria, contribuyendo significativamente a la reducción de residuos urbanos y a la regeneración de suelos.</p>
+        
+        <h4>Misión</h4>
+        <p>Facilitar el acceso al conocimiento y las herramientas necesarias para que cualquier persona pueda implementar sistemas de compostaje adaptados a sus necesidades. A través de talleres prácticos, materiales educativos y acompañamiento continuo, buscamos eliminar las barreras para adoptar esta práctica, demostrando sus beneficios ambientales, sociales y económicos.</p>
+        
+        <h4>Valores</h4>
+        <ul style="list-style-type: none;">
+          <li><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> <strong>Sostenibilidad:</strong> Promovemos prácticas que satisfacen las necesidades actuales sin comprometer las futuras.</li>
+          <li><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> <strong>Educación:</strong> Creemos en el poder transformador del conocimiento compartido.</li>
+          <li><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> <strong>Comunidad:</strong> Trabajamos colaborativamente para generar impactos colectivos.</li>
+          <li><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> <strong>Innovación:</strong> Buscamos constantemente mejorar y adaptar nuestras soluciones.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+ // Array of images for the memory game (add your own image URLs here)
+    const cardImages = [
+      'https://images.unsplash.com/photo-1589927986089-35812388d1f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80', // Compostaje activo
+      'https://images.unsplash.com/photo-1516054575922-f0b8eeadec1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80', // Materiales compostables
+      'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80', // Beneficios ambientales
+      'https://images.unsplash.com/photo-1592578620057-1d2e5b1fc337?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80', // Hojas secas
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80', // Abono terminado
+      'https://images.unsplash.com/photo-1523741543316-bdeed2e73799?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80'  // Residuos orgánicos
+    ];
+
+    // Game variables
+    let cards = [];
+    let flippedCards = [];
+    let moves = 0;
+    let scores = [0, 0]; // Scores for Player 1 and Player 2
+    let currentPlayer = 1; // Start with Player 1
+    let totalPairs = cardImages.length;
+    let lockBoard = false;
+
+    // Initialize game
+    function initGame() {
+      const gameContainer = document.getElementById('memory-game');
+      gameContainer.innerHTML = '';
+      cards = [...cardImages, ...cardImages]; // Duplicate images for pairs
+      cards = cards.sort(() => Math.random() - 0.5); // Shuffle cards randomly
+
+      cards.forEach((image, index) => {
+        const card = document.createElement('div');
+        card.classList.add('memory-card');
+        card.dataset.image = image;
+        card.innerHTML = `
+          <div class="card-front">
+            <img src="${image}" alt="Memory card">
+          </div>
+          <div class="card-back">
+            <i class="fas fa-leaf"></i>
+          </div>
+        `;
+        card.addEventListener('click', flipCard);
+        gameContainer.appendChild(card);
+      });
+
+      // Reset game stats
+      moves = 0;
+      scores = [0, 0];
+      flippedCards = [];
+      currentPlayer = 1;
+      lockBoard = false;
+      updateGameInfo();
+    }
+
+    // Flip card
+    function flipCard() {
+      if (lockBoard || flippedCards.length >= 2 || flippedCards.includes(this) || this.classList.contains('flipped')) {
+        return;
+      }
+
+      this.classList.add('flipped');
+      flippedCards.push(this);
+
+      if (flippedCards.length === 2) {
+        moves++;
+        lockBoard = true;
+        checkMatch();
+      }
+    }
+
+    // Check for match
+    function checkMatch() {
+      const [card1, card2] = flippedCards;
+      if (card1.dataset.image === card2.dataset.image) {
+        scores[currentPlayer - 1]++;
+        updateGameInfo();
+        flippedCards = [];
+        lockBoard = false;
+
+        if (scores[0] + scores[1] === totalPairs) {
+          setTimeout(() => {
+            let winnerMessage;
+            if (scores[0] > scores[1]) {
+              winnerMessage = '¡Jugador 1 gana con ' + scores[0] + ' puntos!';
+            } else if (scores[1] > scores[0]) {
+              winnerMessage = '¡Jugador 2 gana con ' + scores[1] + ' puntos!';
+            } else {
+              winnerMessage = '¡Es un empate!';
+            }
+            alert('¡Juego terminado! ' + winnerMessage);
+          }, 500);
+        }
+      } else {
+        setTimeout(() => {
+          card1.classList.remove('flipped');
+          card2.classList.remove('flipped');
+          flippedCards = [];
+          lockBoard = false;
+          switchPlayer();
+        }, 1000);
+      }
+    }
+
+    // Switch player turn
+    function switchPlayer() {
+      currentPlayer = currentPlayer === 1 ? 2 : 1;
+      updateGameInfo();
+    }
+
+    // Update game info
+    function updateGameInfo() {
+      document.getElementById('score1').textContent = scores[0];
+      document.getElementById('score2').textContent = scores[1];
+      document.getElementById('current-player').textContent = `Jugador ${currentPlayer}`;
+      document.getElementById('moves').textContent = moves;
+    }
+
+    // Reset game
+    function resetGame() {
+      initGame();
+    }
+
+    // Start game on page load
+    initGame();
+
+    // Sidebar toggle
+    const sidebar = document.getElementById("sidebar");
+    const mainContent = document.getElementById("main-content");
+    
+    function toggleSidebar() {
+      sidebar.classList.toggle("hidden");
+      mainContent.classList.toggle("full");
+    }
+    
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', function(event) {
+      if (window.innerWidth <= 768) {
+        const isClickInsideSidebar = sidebar.contains(event.target);
+        const isClickOnToggleBtn = event.target.closest('.toggle-btn');
+        
+        if (!isClickInsideSidebar && !isClickOnToggleBtn && !sidebar.classList.contains('hidden')) {
+          toggleSidebar();
+        }
+      }
+    });
+    
+    // Carousel functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const carouselInner = document.getElementById('carousel-inner');
+    
+    function showSlide(index) {
+      if (index >= slides.length) currentSlide = 0;
+      if (index < 0) currentSlide = slides.length - 1;
+      
+      carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+      
+      // Update indicators
+      indicators.forEach((indicator, i) => {
+        indicator.classList.toggle('active', i === currentSlide);
+      });
+    }
+    
+    function nextSlide() {
+      currentSlide++;
+      showSlide(currentSlide);
+      resetTimer();
+    }
+    
+    function prevSlide() {
+      currentSlide--;
+      showSlide(currentSlide);
+      resetTimer();
+    }
+    
+    function goToSlide(index) {
+      currentSlide = index;
+      showSlide(currentSlide);
+      resetTimer();
+    }
+    
+    // Auto-advance carousel
+    let slideInterval = setInterval(nextSlide, 5000);
+    
+    function resetTimer() {
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+    
+    // Pause on hover
+    const carousel = document.querySelector('.carousel');
+    carousel.addEventListener('mouseenter', () => clearInterval(slideInterval));
+    carousel.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 5000));
+    
+    // Modal functionality
+    function openModal() {
+      document.getElementById('visionModal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal() {
+      document.getElementById('visionModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('visionModal');
+      if (event.target == modal) {
+        closeModal();
+      }
+    };
+    
+    // Scroll to section
+    function scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Back to top button
+    const backToTopBtn = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Animated stats counter
+    function animateStats() {
+      const stat1 = document.getElementById('stat1');
+      const stat2 = document.getElementById('stat2');
+      const stat3 = document.getElementById('stat3');
+      const stat4 = document.getElementById('stat4');
+      
+      const targetValues = [1250, 480, 85, 32];
+      const duration = 2000;
+      const increment = 20;
+      
+      targetValues.forEach((target, index) => {
+        let current = 0;
+        const step = target / (duration / increment);
+        const statElement = document.getElementById(`stat${index + 1}`);
+        
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            clearInterval(timer);
+            current = target;
+          }
+          statElement.textContent = Math.floor(current);
+        }, increment);
+      });
+    }
+    
+    // Intersection Observer for stats animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateStats();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    const statsSection = document.querySelector('.stats-container');
+    observer.observe(statsSection);
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+          
+          // Close sidebar on mobile after navigation
+          if (window.innerWidth <= 768) {
+            toggleSidebar();
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tipos de Compostas | Inicio</title>
+  <style>
+   :root {
+    --primary: #2e7d32;
+    --primary-light: #81c784;
+    --primary-dark: #1b5e20;
+    --secondary: #ffa000;
+    --text: #333333;
+    --bg: #f5f5f5;
+    --card-bg: #ffffff;
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem 3rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+    opacity: 0.6;
+}
+
+header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    position: relative;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    animation: fadeInDown 1s ease;
+}
+
+header p {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    animation: fadeIn 1.5s ease;
+}
+
+/* Asegúrate de que estas animaciones no estén duplicadas */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #fdebb0;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    nav a {
+      color: #333;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    nav a:hover {
+      color: #4caf50;
+      transform: scale(1.1);
+    }
+    .carousel {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      border-radius: 20px;
+      margin: 20px auto;
+      max-width: 90%;
+      height: 250px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .slide {
+      min-width: 100%;
+      height: 250px;
+      position: relative;
+      transition: transform 1s ease-in-out;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slide h2 {
+      position: absolute;
+      bottom: 15px;
+      left: 20px;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 1.6rem;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      font-size: 1.5rem;
+      z-index: 2;
+      transition: background-color 0.3s ease;
+    }
+    .carousel-btn:hover { background-color: rgba(0, 0, 0, 0.8); }
+    .carousel-btn.left { left: 10px; }
+    .carousel-btn.right { right: 10px; }
+
+    .tipo-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 90%;
+      margin: 30px auto;
+      justify-items: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .tipo {
+      padding: 20px;
+      background-color: #fefefe;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .tipo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    .tipo h2 {
+      font-size: 1.8rem;
+      color: #5F9EA0;
+      margin-bottom: 10px;
+    }
+    .tipo p { text-align: justify; color: #555; }
+
+    .tipo-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .tipo-img:hover { transform: scale(1.05); }
+
+    footer {
+      background: linear-gradient(90deg, #d2f5d3, #fdebb0, #ffcccb);
+      animation: gradientShift 6s ease infinite;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+   footer {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    /* Elimina animation: gradientShift si no quieres que cambie */
+}
+}
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes gradientShift2 {
+      0% { background-position: 100% 50%; }
+      50% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes textGlow {
+      0% { text-shadow: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.6); }
+      100% { text-shadow: 0 0 20px rgba(0, 255, 0, 1), 0 0 30px rgba(0, 255, 0, 1); }
+    }
+
+    .scroll-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+    .scroll-top:hover { background-color: #388e3c; }
+
+
+
+
+/* Variables (ajusta los colores) */
+:root {
+  --primary-color: #2e7d32; /* Color principal */
+  --secondary-color: #43a047; /* Color secundario */
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* Estructura del menú */
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.95);
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  transition: transform 0.4s ease;
+  z-index: 1000;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+/* Botón de hamburguesa */
+.toggle-btn {
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  background-color: var(--primary-color);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.toggle-btn:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.1);
+}
+
+/* Estilos para los enlaces del menú */
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 15px;
+  margin: 8px 0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.nav-links a:hover {
+  background-color: rgba(46, 125, 50, 0.1);
+  color: var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+}
+
+ 
+
+.main-content {
+  margin-left: 280px; /* Igual al ancho del sidebar */
+  transition: margin-left 0.4s ease;
+}
+.main-content.full {
+  margin-left: 0; /* Cuando el menú está oculto */
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tipos de Compostas</h1>
+    <p>Transforma residuos en soluciones ecológicas</p>
+  </header>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+
+<!-- Botón de hamburguesa -->
+<button class="toggle-btn" onclick="toggleSidebar()" aria-label="Toggle navigation">
+  <i class="fas fa-bars"></i>
+</button>
+
+<!-- Menú lateral -->
+<nav class="sidebar hidden" id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo"></div> <!-- Cambia "C" por tu logo o inicial -->
+    <h1>Compostas</h1> <!-- Cambia el título -->
+  </div>
+  
+    <div class="nav-links">
+      <a href="hoja1.html" class="active"><i class="fas fa-home"></i>Inicio</a>
+      <a href="hoja2.html"><i class="fas fa-leaf"></i>¿Qué es?</a>
+      <a href="hoja3.html"><i class="fas fa-seedling"></i>Beneficios</a>
+      <a href="hoja4.html"><i class="fas fa-recycle"></i>Tipos</a>
+      <a href="hoja5.html"><i class="fas fa-lightbulb"></i>Consejos</a>
+      <a href="hoja6.html" class="active"><i class="fas fa-hand-holding-heart"></i>Donar</a>
+
+<a href="hoja8.html"><i class="fas fa-shopping-cart"></i>Catálogo</a>
+
+    </div>
+  
+  <div class="sidebar-footer">
+    <p>Transformando residuos en recursos</p>
+  </div>
+</nav>
+
+  
+
+   <div class="carousel">
+    <div class="carousel-track">
+      <div class="slide"><img src="compost1.png" alt="Composta Doméstica"><h2>Composta Doméstica</h2></div>
+      <div class="slide"><img src="compost2.png" alt="Composta Industrial"><h2>Composta Industrial</h2></div>
+      <div class="slide"><img src="compost3.png" alt="Vermicomposta"><h2>Vermicomposta</h2></div>
+      <div class="slide"><img src="compost4.png" alt="Composta Rápida"><h2>Composta Rápida</h2></div>
+      <div class="slide"><img src="compost5.png" alt="Pila Caliente"><h2>Pila Caliente</h2></div>
+      <div class="slide"><img src="compost6.png" alt="Composta en Cajones"><h2>Composta en Cajones</h2></div>
+      <div class="slide"><img src="compost7.png" alt="Bokashi"><h2>Bokashi</h2></div>
+      <div class="slide"><img src="compost8.png" alt="Rotatoria"><h2>Rotatoria</h2></div>
+      <div class="slide"><img src="compost9.png" alt="Comunitaria"><h2>Comunitaria</h2></div>
+      <div class="slide"><img src="compost10.png" alt="De Estiércol"><h2>De Estiércol</h2></div>
+      <div class="slide"><img src="compost11.png" alt="Productos menstruales"><h2>Productos menstruales</h2></div>
+      <div class="slide"><img src="compost12.png" alt="Composta de Cabello"><h2>Composta de Cabello y uñas</h2></div>
+    </div>
+    <button class="carousel-btn left" onclick="prevSlide()" aria-label="Anterior">&#8249;</button>
+    <button class="carousel-btn right" onclick="nextSlide()" aria-label="Siguiente">&#8250;</button>
+  </div>
+
+
+  <div class="tipo-container">
+    <!-- Composta Doméstica -->
+    <div class="tipo">
+      <img src="compost1.png" alt="Composta Doméstica" style="width: 100%; border-radius: 10px;">
+      <h2>Composta Doméstica</h2>
+ <p>¿Qué es la composta doméstica?
+La composta doméstica es un método casero para reciclar residuos orgánicos y convertirlos en abono natural. Se puede realizar en pequeños espacios, como jardines o balcones, y ayuda a reducir la cantidad de basura generada en el hogar.</p>
+<div class="more-info" style="text-align: justify; line-height: 1.5;">
+    <h3>Características principales</h3>
+    <p><strong>Fácil de hacer:</strong> No requiere equipos sofisticados, solo un espacio adecuado.</p>
+    <p><strong>Ecológica:</strong> Reduce la huella de carbono al disminuir los desechos orgánicos.</p>
+    <p><strong>Mejora el suelo:</strong> Aporta nutrientes esenciales para plantas y cultivos.</p>
+    <p><strong>Económica:</strong> Evita la compra de fertilizantes comerciales.</p>
+    <h3>Cómo hacer composta doméstica paso a paso</h3>
+    <p><strong>Elige un lugar adecuado:</strong> Puede ser un rincón del jardín, un compostador o un recipiente ventilado.</p>
+    <p><strong>Prepara la base:</strong> Coloca una capa de material seco (hojas o cartón) para evitar malos olores.</p>
+    <p><strong>Añade residuos orgánicos:</strong> Alterna capas de restos de comida con materiales secos.</p>
+    <p><strong>Mantén la humedad:</strong> La composta debe estar húmeda, pero no empapada.</p>
+    <p><strong>Revuelve regularmente:</strong> Airear la mezcla cada semana acelera la descomposición.</p>
+    <p><strong>Espera entre 2 y 6 meses:</strong> Cuando la composta tenga un color oscuro y textura terrosa, estará lista para usarse.</p>
+</div>
+      <button onclick="toggleInfo(this)">Ver más...</button>
+    </div>
+
+
+    <!-- Composta Industrial -->
+    <div class="tipo">
+      <img src="compost2.png" alt="Composta Industrial" style="width: 100%; border-radius: 10px;">
+      <h2>Composta Industrial</h2>
+      <p>¿Qué es la composta industrial?
+Es un proceso de compostaje a gran escala realizado en instalaciones especializadas. Se utiliza para transformar grandes volúmenes de residuos orgánicos en abono de alta calidad, optimizando el tiempo y las condiciones de descomposición.</p>
+      <div class="more-info" style="text-align: justify; line-height: 1.5;">
+    <h3>Características principales</h3>
+    <p><strong>Control preciso:</strong> Se regula temperatura, humedad y oxigenación para acelerar la biodegradación.</p>
+    <p><strong>Uso de maquinaria:</strong> Trituradoras, mezcladoras y sistemas de aireación mejoran la eficiencia.</p>
+    <p><strong>Residuos procesados:</strong> Restos de comida, podas, estiércol y materiales biodegradables.</p>
+    <p><strong>Producción masiva:</strong> Se obtiene compost en grandes cantidades para uso agrícola o comercial.</p>
+    <h3>Cómo hacer composta industrial paso a paso</h3>
+    <p><strong>Selección de residuos:</strong> Se recolectan restos orgánicos de restaurantes, mercados y granjas.</p>
+    <p><strong>Trituración y mezcla:</strong> Se procesan los materiales para mejorar la descomposición.</p>
+    <p><strong>Control de temperatura y humedad:</strong> Se mantiene un ambiente óptimo para la actividad microbiana.</p>
+    <p><strong>Aireación:</strong> Se utilizan sistemas de ventilación o volteo mecánico para acelerar el proceso.</p>
+    <p><strong>Maduración:</strong> El compost se deja estabilizar antes de ser empaquetado o distribuido.</p>
+</div>
+      <button onclick="toggleInfo(this)">Ver más...</button>
+    </div>
+
+
+    <!-- Vermicomposta -->
+    <div class="tipo">
+      <img src="compost3.png" alt="Vermicomposta" style="width: 100%; border-radius: 10px;">
+      <h2>Vermicomposta</h2>
+      <p>La vermicomposta es un tipo de abono orgánico producido mediante el vermicompostaje, un proceso que utiliza lombrices para descomponer materia orgánica. Este método convierte residuos como restos de comida y desechos vegetales en un fertilizante natural rico en nutrientes.</p>
+      <div class="more-info" style="text-align: justify; line-height: 1.5;">
+    <h3>Características principales</h3>
+    <p><strong>Mejora la salud del suelo:</strong> Aumenta la actividad microbiana y mejora la retención de agua.</p>
+    <p><strong>Reducción de residuos:</strong> Disminuye la cantidad de desechos orgánicos en vertederos.</p>
+    <p><strong>Fertilizante natural:</strong> Rico en nutrientes esenciales como nitrógeno, fósforo y potasio.</p>
+    <p><strong>Control de plagas y enfermedades:</strong> Contiene microorganismos beneficiosos que protegen las plantas.</p>
+    <h3>Cómo hacer vermicomposta paso a paso</h3>
+    <p><strong>Elige un recipiente adecuado:</strong> Puede ser una caja de madera, plástico o un contenedor con ventilación.</p>
+    <p><strong>Añade lombrices:</strong> La lombriz roja de California (*Eisenia foetida*) es la más utilizada.</p>
+    <p><strong>Agrega residuos orgánicos:</strong> Frutas, verduras, café y papel sin tinta.</p>
+    <p><strong>Mantén la humedad:</strong> Rocía agua ocasionalmente para evitar que el material se seque.</p>
+    <p><strong>Evita ciertos materiales:</strong> No agregues cítricos, carnes ni productos lácteos.</p>
+    <p><strong>Espera entre 2 y 3 meses:</strong> Cuando el compost tenga un color oscuro y textura terrosa, estará listo para usarse.</p>
+</div>
+      <button onclick="toggleInfo(this)">Ver más...</button>
+    </div>
+
+
+    <!-- Composta Rápida -->
+    <div class="tipo">
+      <img src="compost4.png" alt="Composta Rápida" style="width: 100%; border-radius: 10px;">
+      <h2>Composta Rápida</h2>
+      <p>¿Qué es la composta rápida?
+La composta rápida es un método acelerado de compostaje que permite obtener abono en semanas en lugar de meses. Se basa en el control de temperatura, humedad y oxigenación para optimizar la descomposición de los residuos orgánicos.</p>
+     <div class="more-info" style="text-align: justify; line-height: 1.5;">
+    <h3>Características principales</h3>
+    <p><strong>Proceso acelerado:</strong> Se obtiene compost en <strong>2 a 6 semanas</strong> en lugar de meses.</p>
+    <p><strong>Control de temperatura:</strong> Se mantiene entre <strong>50 y 60°C</strong> para favorecer la actividad microbiana.</p>
+    <p><strong>Oxigenación constante:</strong> Se requiere volteo frecuente para evitar malos olores y acelerar la descomposición.</p>
+    <p><strong>Equilibrio de materiales:</strong> Se combinan residuos ricos en <strong>nitrógeno</strong> (frutas, verduras) y <strong>carbono</strong> (hojas secas, cartón).</p>
+    <h3>Cómo hacer composta rápida paso a paso</h3>
+    <p><strong>Elige un espacio adecuado:</strong> Puede ser un compostador o una pila al aire libre.</p>
+    <p><strong>Prepara la base:</strong> Coloca ramas y hojas secas para mejorar la aireación.</p>
+    <p><strong>Añade residuos orgánicos:</strong> Alterna capas de materiales húmedos y secos.</p>
+    <p><strong>Controla la humedad:</strong> Mantén la mezcla húmeda, pero no empapada.</p>
+    <p><strong>Voltea la mezcla cada 2-3 días:</strong> Esto acelera la descomposición y evita olores desagradables.</p>
+    <p><strong>Monitorea la temperatura:</strong> Si baja demasiado, agrega más residuos verdes; si sube demasiado, airea la mezcla.</p>
+    <p><strong>Espera entre 2 y 6 semanas:</strong> Cuando el compost tenga un color oscuro y textura terrosa, estará listo para usarse.</p>
+</div>
+      <button onclick="toggleInfo(this)">Ver más...</button>
+    </div>
+
+
+    <!-- Pila Caliente -->
+    <div class="tipo">
+      <img src="compost5.png" alt="Pila Caliente" style="width: 100%; border-radius: 10px;">
+      <h2>Pila Caliente</h2>
+      <p>¿Qué es la pila caliente?
+La pila caliente es un método de compostaje que genera altas temperaturas debido a la actividad microbiana intensa. Este calor acelera la descomposición y elimina patógenos y semillas de malezas, produciendo un compost de alta calidad en menos tiempo.</p>
+      <div class="more-info" style="text-align: justify; line-height: 1.5;">
+    <h3>Características principales</h3>
+    <p><strong>Temperatura elevada:</strong> Puede alcanzar entre <strong>55 y 70°C</strong>, lo que acelera la descomposición.</p>
+    <p><strong>Elimina patógenos y semillas:</strong> El calor generado destruye microorganismos dañinos y evita la propagación de malezas.</p>
+    <p><strong>Mayor velocidad de compostaje:</strong> Se obtiene compost en <strong>1 a 3 meses</strong>, mucho más rápido que otros métodos.</p>
+    <p><strong>Requiere mantenimiento constante:</strong> Es necesario voltear la pila regularmente para mantener la oxigenación.</p>
+    <h3>Cómo hacer una pila caliente paso a paso</h3>
+    <p><strong>Ubicación adecuada:</strong> En un área bien ventilada y con acceso a agua.</p>
+    <p><strong>Preparación de la base:</strong> Coloca ramas y hojas secas para mejorar la aireación.</p>
+    <p><strong>Alterna capas de residuos:</strong> Mezcla materiales ricos en <strong>nitrógeno</strong> (frutas, verduras, estiércol) y <strong>carbono</strong> (hojas secas, cartón).</p>
+    <p><strong>Mantén la humedad:</strong> La pila debe estar húmeda, pero no empapada.</p>
+    <p><strong>Voltea la pila cada 2 semanas:</strong> Esto mantiene la temperatura y acelera la descomposición.</p>
+    <p><strong>Monitorea la temperatura:</strong> Si baja demasiado, agrega más residuos verdes; si sube demasiado, airea la mezcla.</p>
+    <p><strong>Espera entre 1 y 3 meses:</strong> Cuando el compost tenga un color oscuro y textura terrosa, estará listo para usarse.</p>
+</div>
+      <button onclick="toggleInfo(this)">Ver más...</button>
+    </div>
+
+
+    <!-- Composta en Cajones -->
+    <div class="tipo">
+      <img src="compost6.png" alt="Composta en Cajones" style="width: 100%; border-radius: 10px;">
+      <h2>Composta en Cajones</h2>
+      <p>¿Qué es la composta en cajones?
+La composta en cajones es un método de compostaje que utiliza estructuras contenedoras para gestionar residuos orgánicos de manera eficiente. Es ideal para espacios reducidos, ya que permite un mejor control del proceso y evita la dispersión de materiales.</p>
+    <div class="more-info" style="text-align: justify; line-height: 1.5;">
+    <h3>Características principales</h3>
+    <p><strong>Estructura compacta:</strong> Se usa un cajón de madera, plástico o metal con ventilación.</p>
+    <p><strong>Control de humedad y aireación:</strong> Se regula mejor el proceso de descomposición.</p>
+    <p><strong>Evita plagas y malos olores:</strong> Gracias a su diseño cerrado, se minimizan problemas comunes del compostaje.</p>
+    <p><strong>Ideal para hogares y departamentos:</strong> No requiere un gran espacio y puede colocarse en patios o balcones.</p>
+    <h3>Cómo hacer composta en cajones paso a paso</h3>
+    <p><strong>Construcción del cajón:</strong> Usa madera reciclada o plástico con orificios para ventilación.</p>
+    <p><strong>Ubicación adecuada:</strong> Coloca el cajón en un lugar sombreado para evitar que el material se seque demasiado.</p>
+    <p><strong>Añade residuos orgánicos:</strong> Alterna capas de materiales húmedos (frutas, verduras) y secos (hojas, cartón).</p>
+    <p><strong>Mantén la humedad:</strong> Rocía agua ocasionalmente para evitar que la mezcla se seque.</p>
+    <p><strong>Voltea la mezcla cada semana:</strong> Esto acelera la descomposición y evita olores desagradables.</p>
+    <p><strong>Espera entre 2 y 4 meses:</strong> Cuando el compost tenga un color oscuro y textura terrosa, estará listo para usarse.</p>
+</div>
+      <button onclick="toggleInfo(this)">Ver más...</button>
+    </div>
+
+
+    <!-- Bokashi -->
+    <div class="tipo">
+      <img src="compost7.png" alt="Bokashi" style="width: 100%; border-radius: 10px;">
+      <h2>Bokashi</h2>
+      <p>¿Qué es la composta Bokashi?
+La composta Bokashi es un método japonés de fermentación anaeróbica que descompone residuos orgánicos de manera rápida y eficiente. A diferencia del compostaje tradicional, este proceso utiliza microorganismos eficientes para acelerar la descomposición sin generar malos olores.</p>
+     <div class="more-info" style="text-align: justify; line-height: 1.5;">
+    <h3>Características principales</h3>
+    <p><strong>Fermentación anaeróbica:</strong> No requiere oxígeno, lo que evita olores desagradables.</p>
+    <p><strong>Proceso rápido:</strong> Se obtiene compost en <strong>2 semanas</strong>, mucho más rápido que otros métodos.</p>
+    <p><strong>Uso de microorganismos:</strong> Se añaden bacterias beneficiosas para mejorar la calidad del compost.</p>
+    <p><strong>Apto para todo tipo de residuos:</strong> Puede incluir restos de comida, estiércol, cascarilla de arroz y más.</p>
+    <h3>Cómo hacer composta Bokashi paso a paso</h3>
+    <p><strong>Preparación del inóculo:</strong> Se mezcla agua con melaza y levadura para activar los microorganismos.</p>
+    <p><strong>Mezcla de ingredientes:</strong> Se combinan residuos orgánicos con tierra, carbón vegetal y cenizas.</p>
+    <p><strong>Fermentación:</strong> Se compacta la mezcla en un recipiente cerrado y se deja reposar <strong>2 semanas</strong>.</p>
+    <p><strong>Uso del compost:</strong> Se aplica directamente en el suelo o se mezcla con otros fertilizantes.</p>
+</div>
+      <button onclick="toggleInfo(this)">Ver más...</button>
+    </div>
+
+
+    <!-- Composta Rotatoria -->
+    <div class="tipo">
+      <img src="compost8.png" alt="Composta Rotatoria" style="width: 100%; border-radius: 10px;">
+      <h2>Rotatoria</h2>
+      <p>¿Qué es la composta rotatoria?
+La composta rotatoria es un método de compostaje que utiliza un contenedor giratorio para mezclar los residuos orgánicos de manera eficiente. Al girar el compostador, se mejora la aireación y se acelera la descomposición, reduciendo el tiempo necesario para obtener abono.</p>
+      <div class="more-info" style="text-align: justify; line-height: 1.5;">
+    <h3>Características principales</h3>
+    <p><strong>Mezcla uniforme:</strong> El giro constante distribuye los materiales de manera homogénea.</p>
+    <p><strong>Mayor oxigenación:</strong> Favorece la actividad microbiana y evita malos olores.</p>
+    <p><strong>Proceso acelerado:</strong> Se obtiene compost en <strong>4 a 6 semanas</strong>, más rápido que otros métodos.</p>
+    <p><strong>Diseño compacto:</strong> Ideal para patios pequeños y espacios reducidos.</p>
+    <h3>Cómo hacer composta rotatoria paso a paso</h3>
+    <p><strong>Elige un compostador giratorio:</strong> Puede ser un tambor de plástico o metal con soporte.</p>
+    <p><strong>Añade residuos orgánicos:</strong> Frutas, verduras, hojas secas y cartón sin tinta.</p>
+    <p><strong>Gira el compostador cada 2-3 días:</strong> Esto mejora la aireación y acelera la descomposición.</p>
+    <p><strong>Controla la humedad:</strong> Mantén la mezcla húmeda, pero no empapada.</p>
+    <p><strong>Espera entre 4 y 6 semanas:</strong> Cuando el compost tenga un color oscuro y textura terrosa, estará listo para usarse.</p>
+</div>
+      <button onclick="toggleInfo(this)">Ver más...</button>
+    </div>
+
+
+    <!-- Composta Comunitaria -->
+    <div class="tipo">
+      <img src="compost9.png" alt="Composta Comunitaria" style="width: 100%; border-radius: 10px;">
+      <h2>Composta Comunitaria</h2>
+      <p>¿Qué es la composta comunitaria?
+La composta comunitaria es un sistema de compostaje gestionado por grupos de vecinos, barrios o escuelas, permitiendo el reciclaje colectivo de residuos orgánicos. Este método fomenta la sostenibilidad y la educación ambiental, reduciendo la cantidad de desechos que terminan en vertederos.</p>
+    <div class="more-info" style="text-align: justify; line-height: 1.5;">
+    <h3>Características principales</h3>
+    <p><strong>Participación colectiva:</strong> Se organiza entre vecinos, instituciones o comunidades.</p>
+    <p><strong>Reducción de residuos:</strong> Disminuye la cantidad de desechos urbanos y genera abono natural.</p>
+    <p><strong>Uso de espacios comunes:</strong> Se instala en parques, jardines o áreas comunitarias.</p>
+    <p><strong>Educación ambiental:</strong> Promueve la conciencia ecológica y el trabajo en equipo.</p>
+    <h3>Cómo hacer composta comunitaria paso a paso</h3>
+    <p><strong>Identificar un espacio adecuado:</strong> Debe ser accesible y bien ventilado.</p>
+    <p><strong>Recolectar residuos orgánicos:</strong> Se pueden obtener de mercados, restaurantes y hogares.</p>
+    <p><strong>Instalar contenedores de compostaje:</strong> Se usan cajas de madera, compostadores o áreas delimitadas.</p>
+    <p><strong>Organizar el mantenimiento:</strong> Se establecen turnos para voltear la mezcla y controlar la humedad.</p>
+    <p><strong>Monitorear el proceso:</strong> Se revisa la temperatura y la descomposición para garantizar un compost de calidad.</p>
+    <p><strong>Usar el compost:</strong> Se aplica en huertos urbanos, jardines comunitarios o proyectos ecológicos.</p>
+</div>
+      <button onclick="toggleInfo(this)">Ver más...</button>
+    </div>
+
+
+    <!-- Composta de Estiércol -->
+    <div class="tipo">
+      <img src="compost10.png" alt="Composta de Estiércol" style="width: 100%; border-radius: 10px;">
+      <h2>De Estiércol</h2>
+      <p>¿Qué es la composta de estiércol?
+La composta de estiércol es un método de compostaje que utiliza excremento de animales herbívoros como vacas, caballos o gallinas para generar un fertilizante orgánico rico en nutrientes. Este tipo de composta es ampliamente utilizada en agricultura ecológica debido a su capacidad para mejorar la fertilidad del suelo.</p>
+      <div class="more-info" style="text-align: justify; line-height: 1.5;">
+    <h3>Características principales</h3>
+    <p><strong>Alto contenido de nutrientes:</strong> Aporta <strong>nitrógeno, fósforo y potasio</strong>, esenciales para el crecimiento de las plantas.</p>
+    <p><strong>Elimina patógenos:</strong> La fermentación y el calor generado destruyen microorganismos dañinos.</p>
+    <p><strong>Mejora la estructura del suelo:</strong> Aumenta la retención de agua y la aireación.</p>
+    <p><strong>Requiere manejo cuidadoso:</strong> Es importante controlar la humedad y la temperatura para evitar malos olores.</p>
+    <h3>Cómo hacer composta de estiércol paso a paso</h3>
+    <p><strong>Seleccionar el estiércol adecuado:</strong> Se recomienda usar estiércol de vaca, caballo o gallina bien fermentado.</p>
+    <p><strong>Ubicación del compostaje:</strong> Debe estar en un área ventilada y protegida de la lluvia excesiva.</p>
+    <p><strong>Alternar capas de estiércol y material vegetal:</strong> Se mezcla con hojas secas, restos de césped y recortes de plantas.</p>
+    <p><strong>Controlar la humedad:</strong> Mantener la pila húmeda, pero no empapada, regándola ocasionalmente.</p>
+    <p><strong>Voltear la mezcla periódicamente:</strong> Esto garantiza una descomposición uniforme y evita olores desagradables.</p>
+    <p><strong>Monitorear la temperatura:</strong> Debe mantenerse entre <strong>55°C y 65°C</strong> para eliminar bacterias y semillas de malezas.</p>
+    <p><strong>Esperar entre 3 y 6 meses:</strong> Cuando el compost tenga un color oscuro y textura terrosa, estará listo para usarse.</p>
+</div>
+      <button onclick="toggleInfo(this)">Ver más...</button>
+    </div>
+
+
+ <!-- Composta de productos menstruales -->
+    <div class="tipo">
+      <img src="compost11.png" alt="Productos menstruales" style="width: 100%; border-radius: 10px;">
+      <h2>Productos menstruales</h2>
+      <p>¿Qué es la composta de productos menstruales?
+Es un método de compostaje que utiliza productos menstruales biodegradables, como tampones y compresas de algodón orgánico, para reducir residuos sanitarios y generar abono natural. Sin embargo, los productos convencionales con plástico no son aptos para el compostaje.</p>
+  <div class="more-info" style="text-align: justify; line-height: 1.5;">
+    <h3>Características principales</h3>
+    <p><strong>Solo productos biodegradables:</strong> Se deben usar tampones y compresas de <strong>algodón orgánico</strong> y celulosa vegetal.</p>
+    <p><strong>Tiempo de descomposición:</strong> Puede tardar entre <strong>18 y 24 meses</strong> en degradarse completamente.</p>
+    <p><strong>Condiciones óptimas:</strong> Se requiere un compostador con <strong>buena humedad y temperatura</strong> para facilitar la descomposición.</p>
+    <p><strong>Evita plagas:</strong> Se recomienda un compostador bien sellado para evitar insectos.</p>
+    <h3>Cómo hacer composta de productos menstruales paso a paso</h3>
+    <p><strong>Seleccionar productos biodegradables:</strong> Asegurarse de que sean de algodón orgánico y sin plásticos.</p>
+    <p><strong>Preparar el compostador:</strong> Debe estar en un lugar cálido y húmedo para acelerar la descomposición.</p>
+    <p><strong>Añadir residuos orgánicos:</strong> Mezclar los productos menstruales con restos de frutas, verduras y hojas secas.</p>
+    <p><strong>Romper los productos antes de compostar:</strong> Cortar tampones y compresas para facilitar su degradación.</p>
+    <p><strong>Esperar entre 18 y 24 meses:</strong> Cuando el compost tenga un color oscuro y textura terrosa, estará listo para usarse.</p>
+</div>
+      <button onclick="toggleInfo(this)">Ver más...</button>
+    </div>
+
+
+   <!-- Composta de cabello -->
+    <div class="tipo">
+      <img src="compost12.png" alt="Composta de Cabello" style="width: 100%; border-radius: 10px;">
+      <h2>Composta de Cabello y uñas</h2>
+      <p>¿Qué es la composta de cabello y uñas?
+Es un método de compostaje que aprovecha cabello y uñas como fuente de queratina y nutrientes esenciales para el suelo. Estos materiales contienen nitrógeno, potasio y fósforo, lo que los hace beneficiosos para la fertilidad del suelo.</p>
+      <div class="more-info" style="text-align: justify; line-height: 1.5;">
+    <h3>Características principales</h3>
+    <p><strong>Rico en queratina:</strong> Aporta nutrientes esenciales para el crecimiento de las plantas.</p>
+    <p><strong>Descomposición lenta:</strong> Puede tardar varios meses en degradarse completamente.</p>
+    <p><strong>Apto para huertos urbanos:</strong> Se puede usar en jardines y cultivos pequeños.</p>
+    <p><strong>Evita el desperdicio:</strong> Recicla cabello y uñas de humanos y mascotas.</p>
+    <h3>Cómo hacer composta de cabello y uñas paso a paso</h3>
+    <p><strong>Recolectar cabello y uñas:</strong> Se recomienda usar cabello sin tintes ni químicos y uñas sin esmalte.</p>
+    <p><strong>Mezclar con residuos orgánicos:</strong> Se combinan con cáscaras de frutas, verduras y hojas secas.</p>
+    <p><strong>Enterrar la mezcla:</strong> Se coloca en el compostador o directamente en el suelo para facilitar la descomposición.</p>
+    <p><strong>Esperar entre 3 y 6 meses:</strong> Cuando el compost tenga un color oscuro y textura terrosa, estará listo para usarse.</p>
+</div>
+      <button onclick="toggleInfo(this)">Ver más...</button>
+    </div>
+
+  </div>
+
+  
+<script>
+
+  document.addEventListener("DOMContentLoaded", function() {
+    console.log("La página ha terminado de cargar."); // Mensaje para confirmar que se activó el evento
+    var infoElements = document.querySelectorAll(".more-info");
+
+    infoElements.forEach(function(element) {
+      element.style.display = "none"; // Oculta la información extra al cargar la página
+    });
+  });
+
+  function toggleInfo(button) {
+    var moreInfo = button.previousElementSibling;
+    if (moreInfo.style.display === "none") {
+      moreInfo.style.display = "block";
+      button.textContent = "Ver menos...";
+    } else {
+      moreInfo.style.display = "none";
+      button.textContent = "Ver más...";
+    }
+  }
+
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel .slide');
+    const track = document.querySelector('.carousel-track');
+
+    function updateCarousel() {
+      const slideWidth = slides[0].offsetWidth;
+      track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateCarousel();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateCarousel();
+      }
+    }
+
+    window.addEventListener('resize', updateCarousel);
+    window.addEventListener('load', updateCarousel);
+
+setInterval(() => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  updateCarousel();
+}, 5000);
+
+
+function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  const mainContent = document.querySelector('.main-content');
+  sidebar.classList.toggle("hidden");
+  mainContent.classList.toggle("full");
+}
+
+// Cerrar menú al hacer clic fuera (en móviles)
+document.addEventListener('click', function(event) {
+  const sidebar = document.getElementById("sidebar");
+  const toggleBtn = document.querySelector('.toggle-btn');
+  
+  if (window.innerWidth <= 768 && !sidebar.contains(event.target) && event.target !== toggleBtn) {
+    sidebar.classList.add("hidden");
+  }
+});
+
+
+
+
+  </script>
+  
+  <footer>
+    <p> © 2025 Tipos de Composta |<a href="hoja1.html">Volver al inicio</a></p>
+  </footer>
+
+
+
+</body>
+</html>
